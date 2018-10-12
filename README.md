@@ -1,6 +1,32 @@
 frontend-nanodegree-arcade-game
 ===============================
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+# Rick and Morty Arcade Game
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+Udacity Advanced Web Front-End Nanodegree project. JavaScript game based on the classic "Frogger", famous 80's arcade game.
+
+## Wanna play?
+
+Access this link, and have fun [https://romanonatacha.github.io/udacity-arcade-game/](https://romanonatacha.github.io/udacity-arcade-game/)
+
+### Clone the project
+
+Clone this repository
+
+```
+git clone https://github.com/romanonatacha/udacity-arcade-game.git
+```
+
+### Installing
+
+Inside the project directory run npm install
+
+```
+npm install
+```
+
+That's it!
+
+## Authors
+
+* **Natacha Romano** - [GitHub Account](https://github.com/romanonatacha)
