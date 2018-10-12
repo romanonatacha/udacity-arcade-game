@@ -8,7 +8,7 @@ var Enemy = function(row, speed) {
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
-    this.sprite = 'images/enemy-bug.png';
+    this.sprite = 'images/morty.png';
 };
 
 // Update the enemy's position, required method for game
@@ -54,7 +54,7 @@ var Player = function() {
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
-    this.sprite = 'images/char-cat-girl.png';
+    this.sprite = 'images/rick.png';
 };
 
 Player.prototype.reset = function() {
