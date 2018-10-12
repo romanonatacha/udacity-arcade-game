@@ -16,6 +16,7 @@ var Enemy = function(row, speed) {
 Enemy.prototype.update = function(dt) {
     // detect collision and reset position of the enemies qnd the player
     if (this.collision()) {
+        alert('YOU LOSE! Press enter to try again!')
         player.reset();
         this.reset();
     } else {
@@ -90,7 +91,7 @@ Player.prototype.update = function() {
     
 
     if (this.y == -20) {
-        alert('You did it! Press ENTER to restart.');
+        alert('YOU DID IT! Press enter to restart.');
         this.reset();
     }
 
@@ -113,12 +114,12 @@ Player.prototype.handleInput = function(mov) {
 
 let player = new Player();
 let allEnemies = [
-    new Enemy(1, 250),
-    new Enemy(2, 100),
-    new Enemy(3, 100),
-    new Enemy(1, 300),
-    new Enemy(2, 200),
-    new Enemy(3, 150)
+    new Enemy(1, 270),
+    new Enemy(2, 105),
+    new Enemy(3, 110),
+    new Enemy(1, 305),
+    new Enemy(2, 230),
+    new Enemy(3, 154)
 ];
 
 // This listens for key presses and sends the keys to your
