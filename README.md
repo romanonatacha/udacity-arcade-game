@@ -1,6 +1,3 @@
-frontend-nanodegree-arcade-game
-===============================
-
 # Rick and Morty Arcade Game
 
 Udacity Advanced Web Front-End Nanodegree project. JavaScript game based on the classic "Frogger", famous 80's arcade game.
