@@ -64,11 +64,6 @@ Player.prototype.reset = function() {
 
 Player.prototype.update = function() {
     switch (this.move) {
-        case 'left':
-            if(this.x - this.moveX < 0)
-                return;
-            this.x -= this.moveX;
-            break;
         case 'up':
             if(this.y - this.moveY < -20)
                 return;
@@ -78,6 +73,11 @@ Player.prototype.update = function() {
             if(this.x + this.moveX > 404)
                 return;
             this.x += this.moveX;
+            break;
+        case 'left':
+            if(this.x - this.moveX < 0)
+                return;
+            this.x -= this.moveX;
             break;
         case 'down':
             if(this.y + this.moveY > 395)
@@ -90,7 +90,7 @@ Player.prototype.update = function() {
     
 
     if (this.y == -20) {
-        alert('You did it!');
+        alert('You did it! Press ENTER to restart.');
         this.reset();
     }
 
