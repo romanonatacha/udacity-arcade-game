@@ -6,6 +6,9 @@ Udacity Advanced Web Front-End Nanodegree project. JavaScript game based on the 
 
 Access this link, and have fun [https://romanonatacha.github.io/udacity-arcade-game/](https://romanonatacha.github.io/udacity-arcade-game/)
 
+Intructions:
+
+You have to take the Rick up to the pink water, deflecting from Evil Morty and the Picke Rick, using only 4 keys of your keyboard: up, right, left and down.
 
 ### Clone the project
 
