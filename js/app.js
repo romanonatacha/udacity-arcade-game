@@ -1,10 +1,9 @@
 // Creating a super class
 class Component {
-    constructor(x, y, speed, sprite) {
+    constructor(x, y, sprite) {
         this.x = x;
         this.y = y;
         this.sprite = sprite;
-        this.speed = speed;
     }
 
     // Draw the component
@@ -15,9 +14,10 @@ class Component {
 
 // Creating Enemy class extending the component class
 class Enemy extends Component {
-    constructor(x, row, speed, sprite) {
-        super(x, speed, sprite);
+    constructor(x, y, row, speed, sprite) {
+        super(x, y, sprite);
         this.y = (row * 83) - 20;
+        this.speed = speed;
     }
 
     // updates the enemy, detect a colision alert on the screen
@@ -106,17 +106,17 @@ class Player extends Component {
     }
 }
 
-// Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
+// creating objects instances
+// one player with 3 parameters (x, y, sprite)
+// an array of enemies with 5 parameters (x, y, row, speed, sprite)
 let player = new Player(202, 395, 'images/rick.png');
 let allEnemies = [
-    new Enemy(101, 1, 270, 'images/morty.png'),
-    new Enemy(99, 2, 105, 'images/pickle-rick.png'),
-    new Enemy(102, 3, 110, 'images/morty.png'),
-    new Enemy(101, 1, 305, 'images/morty.png'),
-    new Enemy(100, 2, 230, 'images/pickle-rick.png'),
-    new Enemy(101, 3, 154, 'images/morty.png')
+    new Enemy(103, null, 1, 270, 'images/morty.png'),
+    new Enemy(101, null, 2, 150, 'images/pickle-rick.png'),
+    new Enemy(99, null, 3, 120, 'images/morty.png'),
+    new Enemy(110, null, 1, 305, 'images/pickle-rick.png'),
+    new Enemy(101, null, 2, 250, 'images/morty.png'),
+    new Enemy(121, null,  3, 340, 'images/pickle-rick.png')
 ];
 
 // This listens for key presses and sends the keys to your
