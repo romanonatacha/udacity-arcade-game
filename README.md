@@ -22,7 +22,9 @@ Inside the project directory run npm install
 npm install
 ```
 
-That's it!
+### HOw to play
+
+Open the file index.html in your favorite browser, and you'll see the game running!
 
 ## Authors
 

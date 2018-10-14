@@ -1,125 +1,122 @@
-// Enemies our player must avoid
-var Enemy = function(row, speed) {
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
-    this.x = 101;
-    this.y = (row * 83) - 20;
-    this.speed = speed;
+// Creating a super class
+class Component {
+    constructor(x, y, speed, sprite) {
+        this.x = x;
+        this.y = y;
+        this.sprite = sprite;
+        this.speed = speed;
+    }
 
-    // The image/sprite for our enemies, this uses
-    // a helper we've provided to easily load images
-    this.sprite = 'images/morty.png';
-};
+    // Draw the component
+    render() {
+        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);        
+    }
+}
 
-// Update the enemy's position, required method for game
-// Parameter: dt, a time delta between ticks
-Enemy.prototype.update = function(dt) {
-    // detect collision and reset position of the enemies qnd the player
-    if (this.collision()) {
-        alert('YOU LOSE! Press enter to try again!')
-        player.reset();
-        this.reset();
-    } else {
-        this.x += this.speed * dt;
-        if (this.x >= 505) {
-            this.x = -101;
+// Creating Enemy class extending the component class
+class Enemy extends Component {
+    constructor(x, row, speed, sprite) {
+        super(x, speed, sprite);
+        this.y = (row * 83) - 20;
+    }
+
+    // updates the enemy, detect a colision alert on the screen
+    // and reset the position of the player and the enemies
+    update(dt) {
+        if (this.collision()) {
+            alert('YOU LOSE! Press enter to try again!')
+            player.reset();
+            this.reset();
+        } else {
+            this.x += this.speed * dt;
+            if (this.x >= 505) {
+                this.x = -101;
+            }
         }
     }
-};
 
-// Draw the enemy on the screen, required method for game
-Enemy.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-};
-
-Enemy.prototype.collision = function() {
-    return ((this.x + 101 - 30 > player.x && this.x + 101 -30 < player.x + 101 ||
-        this.x >= player.x && this.x < player.x + 101 -30)) && this.y === player.y;
-}
-
-Enemy.prototype.reset = function() {
-    this.x = 101;
-}
-
-// Now write your own player class
-// This class requires an update(), render() and
-// a handleInput() method.
-var Player = function() {
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
-    this.x = 202;
-    this.y = 395;
-    this.moveX = 101;
-    this.moveY = 83;
-    this.move = '';
-
-    // The image/sprite for our enemies, this uses
-    // a helper we've provided to easily load images
-    this.sprite = 'images/rick.png';
-};
-
-Player.prototype.reset = function() {
-    this.x = 202;
-    this.y = 395;
-}
-
-Player.prototype.update = function() {
-    switch (this.move) {
-        case 'up':
-            if(this.y - this.moveY < -20)
-                return;
-            this.y -= this.moveY;
-            break;
-        case 'right':
-            if(this.x + this.moveX > 404)
-                return;
-            this.x += this.moveX;
-            break;
-        case 'left':
-            if(this.x - this.moveX < 0)
-                return;
-            this.x -= this.moveX;
-            break;
-        case 'down':
-            if(this.y + this.moveY > 395)
-                return;
-            this.y += this.moveY;
-            break;
-        default:
-            break;
+    // dedect a collision between the player and the enemy
+    collision() {
+        return ((this.x + 101 - 30 > player.x
+            && this.x + 101 -30 < player.x + 101
+            || this.x >= player.x
+            && this.x < player.x + 101 -30))
+            && this.y === player.y;
     }
+
+    // reset the enemy position on the screen to the inicial position
+    reset() {
+        this.x = 101;
+    }
+}
+
+// Creating PLayer class extending the component class
+class Player extends Component {
+    constructor(x, y, sprite) {
+        super(x, y, sprite);
+        this.moveX = 101;
+        this.moveY = 83;
+        this.move = '';
+    }
+
+    // uptades the player position when the keys are pressed, if the player wins a alert will apear
+    // and the game will restart
+    update() {
+        switch (this.move) {
+            case 'up':
+                if(this.y - this.moveY < -20)
+                    return;
+                this.y -= this.moveY;
+                break;
+            case 'right':
+                if(this.x + this.moveX > 404)
+                    return;
+                this.x += this.moveX;
+                break;
+            case 'left':
+                if(this.x - this.moveX < 0)
+                    return;
+                this.x -= this.moveX;
+                break;
+            case 'down':
+                if(this.y + this.moveY > 395)
+                    return;
+                this.y += this.moveY;
+                break;
+            default:
+                break;
+        }
     
-
-    if (this.y == -20) {
-        alert('YOU DID IT! Press enter to restart.');
-        this.reset();
+        if (this.y == -20) {
+            alert('YOU DID IT! Press enter to restart.');
+            this.reset();
+        }
+    
+        this.move = '';
     }
 
-    this.move = '';
-}
+    // reset the player position to the inicial position
+    reset() {
+        this.x = 202;
+        this.y = 395;
+    }
 
-
-// Draw the player on the screen
-Player.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-};
-
-Player.prototype.handleInput = function(mov) {
-    this.move = mov;
+    handleInput(mov) {
+        this.move = mov;
+    }
 }
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-
-let player = new Player();
+let player = new Player(202, 395, 'images/rick.png');
 let allEnemies = [
-    new Enemy(1, 270),
-    new Enemy(2, 105),
-    new Enemy(3, 110),
-    new Enemy(1, 305),
-    new Enemy(2, 230),
-    new Enemy(3, 154)
+    new Enemy(101, 1, 270, 'images/morty.png'),
+    new Enemy(99, 2, 105, 'images/pickle-rick.png'),
+    new Enemy(102, 3, 110, 'images/morty.png'),
+    new Enemy(101, 1, 305, 'images/morty.png'),
+    new Enemy(100, 2, 230, 'images/pickle-rick.png'),
+    new Enemy(101, 3, 154, 'images/morty.png')
 ];
 
 // This listens for key presses and sends the keys to your
