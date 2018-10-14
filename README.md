@@ -1,10 +1,11 @@
 # Rick and Morty Arcade Game
 
-Udacity Advanced Web Front-End Nanodegree project. JavaScript game based on the classic "Frogger", famous 80's arcade game.
+Udacity Advanced Web Front-End Nanodegree project. JavaScript game based on the classic "Frogger", famous 80's arcade game with Rick and Morty theme.
 
 ## Wanna play?
 
 Access this link, and have fun [https://romanonatacha.github.io/udacity-arcade-game/](https://romanonatacha.github.io/udacity-arcade-game/)
+
 
 ### Clone the project
 
@@ -24,7 +25,7 @@ npm install
 
 ### HOw to play
 
-Open the file index.html in your favorite browser, and you'll see the game running!
+Open the index.html file in your favorite browser, and you'll see the game running!
 
 ## Authors
 
